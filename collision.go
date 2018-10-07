@@ -66,7 +66,8 @@ func (c *CollisionSystem) New(w *ecs.World) {
 // It also adds the body's user data to the BasicEntity's ID, which makes it
 // easy to figure out which entities are which when comparing in the messages / callbacks
 func (c *CollisionSystem) Add(basic *ecs.BasicEntity, space *common.SpaceComponent, box *Box2dComponent) {
-	box.Body.SetUserData(basic.ID())
+	// Commented this line due to reasons we want to stick with our own UserData
+	//box.Body.SetUserData(basic.ID())
 	c.entities = append(c.entities, collisionEntity{basic, space, box})
 }
 
